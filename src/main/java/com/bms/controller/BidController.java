@@ -18,20 +18,20 @@ import com.bms.service.BidService;
 
 @CrossOrigin
 @RestController
-@RequestMapping(value = "/bid")
+@RequestMapping(value = "/biddingService")
 public class BidController {
 
 	@Autowired
 	BidService bidService;
 
-	@RequestMapping(value = "/bidItem", method = RequestMethod.POST)
+	@RequestMapping(value = "/bidOnItem", method = RequestMethod.POST)
 	public JSONObject getList(@RequestBody String input) throws ParseException, java.text.ParseException {
 		TimeZone.setDefault(TimeZone.getTimeZone("IST"));
 		Date date = new Date();
 		return bidService.bidItem(input, date);
 	}
 
-	@RequestMapping(value = "/allBids", method = RequestMethod.GET)
+	@RequestMapping(value = "/listAllBids", method = RequestMethod.GET)
 	public List<BidList> allBids() {
 		return bidService.allBids();
 	}

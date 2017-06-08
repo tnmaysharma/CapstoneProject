@@ -20,13 +20,13 @@ import com.bms.service.CreateBidService;
 
 @CrossOrigin
 @RestController
-@RequestMapping(value = "/openBid")
+@RequestMapping(value = "/opennigBid")
 public class CreateBidController {
 
 	@Autowired
 	CreateBidService createBidService;
 
-	@RequestMapping(value = "/open", method = RequestMethod.POST)
+	@RequestMapping(value = "/openBid", method = RequestMethod.POST)
 	public JSONObject openBid(@RequestBody String input) throws ParseException, InvalidKeyException, NoSuchAlgorithmException, UnsupportedEncodingException, java.text.ParseException {
 
 		TimeZone.setDefault(TimeZone.getTimeZone("IST"));
