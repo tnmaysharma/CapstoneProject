@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
+import java.util.List;
 import java.util.TimeZone;
 
 import org.json.simple.JSONObject;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bms.domain.CreateBidList;
 import com.bms.service.CreateBidService;
 
 @CrossOrigin
@@ -40,6 +42,12 @@ public class CreateBidController {
 			output.put("info", "This API is reserved for admin. Kindly provide valid inputs");
 		}
 		return output;
+	}
+	
+	@RequestMapping(value = "/bidList", method = RequestMethod.GET)
+	public List<CreateBidList> getList() throws ParseException, java.text.ParseException {
+		return createBidService.getList();
+
 	}
 
 }
