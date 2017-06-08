@@ -1,6 +1,8 @@
 package com.bms.controller;
 
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
@@ -12,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bms.domain.BidList;
-import com.bms.domain.CreateBidList;
 import com.bms.service.BidService;
 
 @CrossOrigin
@@ -23,15 +24,11 @@ public class BidController {
 	@Autowired
 	BidService bidService;
 
-	@RequestMapping(value = "/bidList", method = RequestMethod.GET)
-	public List<CreateBidList> getList() throws ParseException, java.text.ParseException {
-		return bidService.getList();
-
-	}
-
 	@RequestMapping(value = "/bidItem", method = RequestMethod.POST)
 	public JSONObject getList(@RequestBody String input) throws ParseException, java.text.ParseException {
-		return bidService.bidItem(input);
+		TimeZone.setDefault(TimeZone.getTimeZone("IST"));
+		Date date = new Date();
+		return bidService.bidItem(input, date);
 	}
 
 	@RequestMapping(value = "/allBids", method = RequestMethod.GET)

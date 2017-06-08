@@ -1,6 +1,5 @@
 package com.bms.utils;
 
-import java.util.Date;
 import java.util.Map.Entry;
 import java.util.Set;
 
@@ -8,7 +7,6 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import com.google.gson.JsonArray;
@@ -53,21 +51,7 @@ public class Utils {
 
 	}
 
-	/*
-	 * public String getMongoVcapServiceName(String vcap_service) { JSONParser
-	 * jsonParser = new JSONParser(); JSONObject bluePrintObject; String
-	 * serviceName = null; try { bluePrintObject = (JSONObject)
-	 * jsonParser.parse(vcap_service); for (Object key :
-	 * bluePrintObject.keySet()) { if
-	 * (key.toString().toLowerCase().contains("mlab")) { JSONArray obj =
-	 * (JSONArray) bluePrintObject.get(key.toString()); JSONObject object =
-	 * (JSONObject) obj.get(0); serviceName = (String) object.get("name"); }
-	 * 
-	 * } } catch (ParseException e) { // TODO Auto-generated catch block
-	 * e.printStackTrace(); } return serviceName;
-	 * 
-	 * }
-	 */ /**
+	 /**
 		 * Method to get the app name from environment variables
 		 * 
 		 * @param vcap_app

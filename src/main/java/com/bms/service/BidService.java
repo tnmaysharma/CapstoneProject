@@ -33,7 +33,7 @@ public class BidService {
 	}
 
 	@SuppressWarnings("unchecked")
-	public JSONObject bidItem(String input) throws ParseException, java.text.ParseException {
+	public JSONObject bidItem(String input, Date currentDate) throws ParseException, java.text.ParseException {
 
 		Object obj = new JSONParser().parse(input);
 		JSONObject json = (JSONObject) obj;
@@ -41,8 +41,6 @@ public class BidService {
 		CreateBidList createBidList = jpaCreateBidList.findOne((String) json.get("bidId"));
 		Date startDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(createBidList.getStartDate());
 		Date endDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(createBidList.getEndDate());
-
-		Date currentDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse((String) json.get("date"));
 
 		JSONObject status = new JSONObject();
 
@@ -52,7 +50,7 @@ public class BidService {
 				status.put("issue", "Bidding price can not be less than base bid price");
 			} else {
 				jpaBidList.insert(new BidList((String) json.get("biddingPrice"), (String) json.get("emailId"),
-						(String) json.get("date"), (String) json.get("bidId")));
+						(String) json.get("bidId")));
 				status.put("status", "success");
 			}
 		} else {
@@ -62,7 +60,6 @@ public class BidService {
 
 		return status;
 	}
-
 	public List<BidList> allBids() {
 		return jpaBidList.findAll();
 	}

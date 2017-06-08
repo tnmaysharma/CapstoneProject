@@ -23,10 +23,7 @@ import com.bms.repostiries.JpaProductList;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
-/**
- * @author 540491
- *
- */
+
 @Component
 public class MongoDbMetaDataDAO {
 
@@ -45,14 +42,7 @@ public class MongoDbMetaDataDAO {
 		;
 	}
 
-	/**
-	 * method to insert the collections data in mongoDB
-	 * 
-	 * @throws IOException
-	 * @throws JsonMappingException
-	 * @throws JsonParseException
-	 * @throws ParseException
-	 */
+
 	public void insertCollections() throws JsonParseException, JsonMappingException, IOException, ParseException {
 
 		List<ProductList> documents = getData("ProductList");
@@ -79,9 +69,6 @@ public class MongoDbMetaDataDAO {
 
 	}
 
-	/**
-	 * method to check whether the record exists in mongoDB
-	 */
 	public boolean isRecordExists() {
 
 		if (jpaProductList.count() > 0) {
